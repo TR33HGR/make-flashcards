@@ -57,3 +57,15 @@ class Main:
 
         output_file = WindowsPath(path_to_output_file)
         cv2.imwrite(str(output_file), self.image)
+
+    def get_bound_boxes(self):
+        if self.text is None:
+            raise FileNotFoundError("No text to find boundries")
+
+        boxes = pytesseract.image_to_boxes(self.image)
+
+        output_file = WindowsPath("tests/res/bound_boxes.txt")
+        if not output_file.exists():
+            output_file.touch()
+        with output_file.open(mode="w", encoding="utf-8") as output:
+            output.write(boxes)

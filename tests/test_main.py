@@ -56,6 +56,12 @@ def test_write_text_to_file_raises_FileNotFoundError_if_read_text_from_image_not
     assert_that(calling(the_main.write_text_to_file).with_args("_"), raises(FileNotFoundError))
 
 
+def test_get_bound_boxes_raises_FileNotFoundError_if_read_text_from_image_not_called():
+    the_main = Main()
+
+    assert_that(calling(the_main.get_bound_boxes), raises(FileNotFoundError))
+
+
 def test():
     the_main = Main()
     image = "tests/res/level1_1.jpg"
@@ -64,5 +70,6 @@ def test():
     the_main.read_image(image)
     # the_main.display_image()
     the_main.read_text_from_image()
-    the_main.write_text_to_file("tests/res/output.txt")
-    the_main.write_image("tests/res/image.jpg")
+    # the_main.write_text_to_file("tests/res/output.txt")
+    # the_main.write_image("tests/res/image.jpg")
+    the_main.get_bound_boxes()
