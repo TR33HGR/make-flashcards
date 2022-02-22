@@ -7,6 +7,7 @@ class Main:
     def __init__(self):
         self._path_to_tesseract = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
         self.image = None
+        self.text = None
 
     def configure_path_to_tesseract(self):
         path = WindowsPath(self._path_to_tesseract)
@@ -33,3 +34,19 @@ class Main:
 
         cv2.imshow("Image", self.image)
         cv2.waitKey(0)
+
+    def read_text_from_image(self):
+        if self.image is None:
+            raise FileNotFoundError("No image to read")
+
+        self.text = pytesseract.image_to_string(self.image)
+
+    def write_text_to_file(self, path_to_output_file):
+        if self.text is None:
+            raise FileNotFoundError("No text to output")
+
+        output_file = WindowsPath(path_to_output_file)
+        if not output_file.exists():
+            output_file.touch()
+        with output_file.open(mode="w", encoding="utf-8") as output:
+            output.write(self.text)
