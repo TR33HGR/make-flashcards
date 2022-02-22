@@ -50,3 +50,10 @@ class Main:
             output_file.touch()
         with output_file.open(mode="w", encoding="utf-8") as output:
             output.write(self.text)
+
+    def write_image(self, path_to_output_file):
+        if self.image is None:
+            raise FileNotFoundError("No image to output")
+
+        output_file = WindowsPath(path_to_output_file)
+        cv2.imwrite(str(output_file), self.image)

@@ -38,6 +38,12 @@ def test_display_image_raises_FileNotFoundError_if_read_image_not_called():
     assert_that(calling(the_main.display_image), raises(FileNotFoundError))
 
 
+def test_write_image_raises_FileNotFoundError_if_read_image_not_called():
+    the_main = Main()
+
+    assert_that(calling(the_main.write_image).with_args("_"), raises(FileNotFoundError))
+
+
 def test_read_text_from_image_raises_FileNotFoundError_if_read_image_not_called():
     the_main = Main()
 
@@ -56,6 +62,7 @@ def test():
 
     the_main.configure_path_to_tesseract()
     the_main.read_image(image)
-    the_main.display_image()
+    # the_main.display_image()
     the_main.read_text_from_image()
     the_main.write_text_to_file("tests/res/output.txt")
+    the_main.write_image("tests/res/image.jpg")
