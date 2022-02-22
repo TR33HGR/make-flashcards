@@ -1,7 +1,7 @@
 # make-flashcards
 Automates creation of flashcards from Konkuk Language Institute's Korean textbook
 
-Created following the [TODO]() tutorial
+Created following the [Python Project – Text Detection and Extraction with OpenCV and OCR](https://projectgurukul.org/python-text-detection-extraction-opencv-ocr/) tutorial
 
 ## tox
 For tox, from the base directory, run the command:
