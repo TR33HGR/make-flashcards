@@ -24,7 +24,8 @@ class Main:
         if not path.exists():
             raise FileNotFoundError(f"Image not found at {path}")
 
-        self.image = cv2.imread(str(path))
+        image = cv2.imread(str(path))
+        self.image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     def display_image(self):
         if self.image is None:
