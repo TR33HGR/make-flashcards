@@ -1,7 +1,7 @@
-# python-template
-Template for installable python package, with tox for unit tests & linting.
+# make-flashcards
+Automates creation of flashcards from Konkuk Language Institute's Korean textbook
 
-Created following the [Packaging Python Projects](https://packaging.python.org/tutorials/packaging-projects/) tutorial
+Created following the [TODO]() tutorial
 
 ## tox
 For tox, from the base directory, run the command:
