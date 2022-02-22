@@ -12,3 +12,36 @@ def test_configure_path_to_tesseract_raises_FileNotFoundError_if_tesserect_exe_i
     the_main.set_path_to_tesseract("c:/assumed/path")
 
     assert_that(calling(the_main.configure_path_to_tesseract), raises(FileNotFoundError))
+
+
+def test_read_image_raises_TypeError_if_provided_a_folder_instead_of_a_file():
+    the_main = Main()
+
+    assert_that(calling(the_main.read_image).with_args("c:/"), raises(TypeError))
+
+
+def test_read_image_raises_TypeError_if_not_provided_a_jpg():
+    the_main = Main()
+
+    assert_that(calling(the_main.read_image).with_args("c:/incorrect/path.not_jpg"), raises(TypeError))
+
+
+def test_read_image_raises_FileNotFoundError_if_provided_image_path_is_incorrect():
+    the_main = Main()
+
+    assert_that(calling(the_main.read_image).with_args("c:/incorrect/path.jpg"), raises(FileNotFoundError))
+
+
+def test_display_image_raises_FileNotFoundError_if_read_image_not_called():
+    the_main = Main()
+
+    assert_that(calling(the_main.display_image), raises(FileNotFoundError))
+
+
+def test():
+    the_main = Main()
+    image = "tests/res/level1_1.jpg"
+
+    the_main.configure_path_to_tesseract()
+    the_main.read_image(image)
+    the_main.display_image()
