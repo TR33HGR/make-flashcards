@@ -22,5 +22,10 @@ setuptools.setup(
     ],
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
+    install_requires=[
+          'opencv-python',
+          'pathlib',
+          'pytesseract',
+    ],
     python_requires=">=3.6",
 )
