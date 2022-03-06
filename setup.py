@@ -26,6 +26,7 @@ setuptools.setup(
           'opencv-python',
           'pathlib',
           'pytesseract',
+          'numpy',
     ],
     python_requires=">=3.6",
 )

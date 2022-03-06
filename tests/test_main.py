@@ -64,12 +64,14 @@ def test_get_bound_boxes_raises_FileNotFoundError_if_read_text_from_image_not_ca
 
 def test():
     the_main = Main()
-    image = "tests/res/level1_1.jpg"
+    image = "tests/res/level1_1_kor.jpg"
 
     the_main.configure_path_to_tesseract()
     the_main.read_image(image)
     # the_main.display_image()
     the_main.read_text_from_image()
-    # the_main.write_text_to_file("tests/res/output.txt")
+    the_main.write_text_to_file("tests/res/output.txt")
     # the_main.write_image("tests/res/image.jpg")
-    the_main.get_bound_boxes()
+    # the_main.get_bound_boxes()
+    the_main.draw_boxes_on_image()
+    the_main.write_image("tests/res/image.jpg")
